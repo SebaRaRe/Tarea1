@@ -1,35 +1,27 @@
 #solucion simple de k-esimo
 import timeit   #para medir tiempo
-def mergesort(lista):     #implementacion merge
-    resultado = []
-    if len(lista) < 2:
-        return lista
-    mid = len(lista)/2
-    izq = mergesort(lista[:mid])
-    der = mergesort(lista[mid:])
-    while (len(izq) > 0) or (len(der) > 0):
-        if len(izq) > 0 and len(der) > 0:
-            if izq[0] > der[0]:
-                resultado.append(der[0])
-                der.pop(0)
-            else:
-                resultado.append(izq[0])
-                izq.pop(0)
-        elif len(der) > 0:
-            for i in der:
-                resultado.append(i)
-                der.pop(0)
-        else:
-            for i in izq:
-                resultado.append(i)
-                izq.pop(0)
-    return resultado
+import heapq 
+
+#siguiente funcion del codigo documentado en bibliografia
+
+ 
+def merge_sort(m):
+    if len(m) <= 1:
+        return m
+ 
+    middle = len(m) // 2
+    left = m[:middle]
+    right = m[middle:]
+ 
+    left = merge_sort(left)
+    right = merge_sort(right)
+    return list(heapq.merge(left, right))
 
 def k_esimosimple(k,array):  
         if k == 0:           #aca se verifica si k es cero y se imprime k es invalido
 	        print "k es invalido"
         else :
-            nuevo=mergesort(array)   #si k no es cero, nuevo es = a la funcion merge con el arreglo y lo devuelve ordenado
+            nuevo=merge_sort(array)   #si k no es cero, nuevo es = a la funcion merge con el arreglo y lo devuelve ordenado
             return nuevo[k-1]        #devuelve el k menos uno porque e los arreglo tenemos la posicion 0
 j=raw_input('Ingresar nombre de archivo a probar sin extension(input): ') #con esta funcion igualamos a j una entrada de teclado
 archivo = open('%s.txt'%j, 'r')   #abre y lee el archivo ya creado        #usaremos por ejemplo "cienmil" "doscientosmil"
