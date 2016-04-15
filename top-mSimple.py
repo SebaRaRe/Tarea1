@@ -17,7 +17,7 @@ def merge_sort(m):
     right = merge_sort(right)
     return list(heapq.merge(left, right))
 	
-def topmMejorado(m,array):  
+def topmSimple(m,array):  
         if m == 0:           #aca se verifica si k es cero y se imprime k es invalido
 	        print "m es invalido"
         else :
