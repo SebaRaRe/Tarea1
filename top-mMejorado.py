@@ -1,9 +1,9 @@
 import heapq
 import timeit
 def topmMejorado(m,array):
-	arrayOrdenado = array[:]
-	heapq.heapify(arrayOrdenado) 
-	return [heapq.heappop(arrayOrdenado) for i in range(m)]
+	arrayO = array[:]
+	heapq.heapify(arrayO) 
+	return [heapq.heappop(arrayO) for i in range(m)]
 
 j=raw_input('Ingresar nombre de archivo a probar sin extension(input): ')
 archivo = open('%s.txt'%j, 'r')
